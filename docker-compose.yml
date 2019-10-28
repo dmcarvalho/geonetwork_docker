@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  geonetwork.3.6.0:
+    build: ./geonetwork/3_6_0/
+    container_name: geonetwork.3.6.0
+    network_mode: "host"
+    restart: always
+    ports:
+      - "3032:8080"
+    volumes:
+      - ./geonetwork/3_6_0/data_dir:/var/lib/geonetwork/data
+      - ./metadata:/tmp/metadata_to_import/sys_geonetwork/iso19139.mgbsumarizado
+    env_file:
+      - config.env
